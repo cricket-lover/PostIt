@@ -9,7 +9,7 @@
   "scripts": {
     "test": "(export knex_test='./database/testDb.db'; rm -f $knex_test;export knex_env='test';export db='testDb.db';npm run setUpKnex;./shell_scripts/setTestDb.sh $knex_test ;nyc mocha)",
     "setUpKnex": "touch $knex_test; NODE_ENV=test npm run knex migrate:latest;",
-    "start": "touch database/postitDB.db; ./shell_scripts/setDb.sh database/postitDB.db; node server.js",
+    "start": "npm install sqlite3; touch database/postitDB.db; ./shell_scripts/setDb.sh database/postitDB.db; node server.js",
     "lint": "eslint . --ext .js",
     "preCommit": "npm test && npm run lint",
     "knex": "knex"
